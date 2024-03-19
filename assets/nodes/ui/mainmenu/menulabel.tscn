@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp64hlup3fml5"]
+
+[ext_resource type="Theme" uid="uid://cn7qrt7fmqpoe" path="res://assets/theme/maintheme.tres" id="1_8ucm2"]
+[ext_resource type="Script" path="res://assets/nodes/ui/mainmenu/menulabel.gd" id="2_k8dj3"]
+
+[node name="Label" type="Label"]
+theme = ExtResource("1_8ucm2")
+script = ExtResource("2_k8dj3")

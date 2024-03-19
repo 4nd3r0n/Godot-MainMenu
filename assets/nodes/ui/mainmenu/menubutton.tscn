@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c88nc2c8flbqv"]
+
+[ext_resource type="Theme" uid="uid://cn7qrt7fmqpoe" path="res://assets/theme/maintheme.tres" id="1_e3apg"]
+[ext_resource type="Script" path="res://assets/nodes/ui/mainmenu/menubutton.gd" id="2_0edvu"]
+
+[node name="Button" type="Button" node_paths=PackedStringArray("_self")]
+theme = ExtResource("1_e3apg")
+flat = true
+script = ExtResource("2_0edvu")
+_self = NodePath(".")

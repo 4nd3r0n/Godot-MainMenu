@@ -1,0 +1,288 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7rw8dyq6hjky"]
+
+[ext_resource type="Script" path="res://assets/scenes/main/main.gd" id="1_51w35"]
+[ext_resource type="Script" path="res://assets/scenes/main/mainmenu.gd" id="2_2vvu1"]
+[ext_resource type="PackedScene" uid="uid://c88nc2c8flbqv" path="res://assets/nodes/ui/mainmenu/menubutton.tscn" id="2_noubv"]
+[ext_resource type="PackedScene" uid="uid://dp64hlup3fml5" path="res://assets/nodes/ui/mainmenu/menulabel.tscn" id="3_ooa5h"]
+[ext_resource type="Script" path="res://assets/scenes/main/settings.gd" id="5_ibly3"]
+[ext_resource type="Script" path="res://assets/scenes/main/exit.gd" id="5_jvt1i"]
+[ext_resource type="PackedScene" uid="uid://c83gdncwwbia3" path="res://assets/nodes/ui/settings/settinglabel.tscn" id="6_1nigf"]
+[ext_resource type="PackedScene" uid="uid://bm1cxd343bf74" path="res://assets/nodes/ui/settings/settingscheckbutton.tscn" id="7_bv3ya"]
+
+[node name="Main" type="Control" node_paths=PackedStringArray("mainmenu", "play", "settings", "exit")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_51w35")
+mainmenu = NodePath("MainMenu")
+play = NodePath("Play")
+settings = NodePath("Settings")
+exit = NodePath("Exit")
+
+[node name="MainMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("play_button", "settings_button", "exit_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2vvu1")
+play_button = NodePath("MC/HC/VC/VC/PlayButton")
+settings_button = NodePath("MC/HC/VC/VC/SettingsButton")
+exit_button = NodePath("MC/HC/VC/VC/ExitButton")
+
+[node name="MMBackground" type="ColorRect" parent="MainMenu"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MC" type="MarginContainer" parent="MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HC" type="HBoxContainer" parent="MainMenu/MC"]
+layout_mode = 2
+
+[node name="VC" type="VBoxContainer" parent="MainMenu/MC/HC"]
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="MainMenu/MC/HC/VC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VC" type="VBoxContainer" parent="MainMenu/MC/HC/VC"]
+layout_mode = 2
+
+[node name="PlayButton" parent="MainMenu/MC/HC/VC/VC" instance=ExtResource("2_noubv")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ExitButton")
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../ExitButton")
+text = "Play"
+
+[node name="SettingsButton" parent="MainMenu/MC/HC/VC/VC" node_paths=PackedStringArray("_self") instance=ExtResource("2_noubv")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../PlayButton")
+text = "Settings"
+_self = NodePath("../PlayButton")
+
+[node name="ExitButton" parent="MainMenu/MC/HC/VC/VC" node_paths=PackedStringArray("_self") instance=ExtResource("2_noubv")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SettingsButton")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../SettingsButton")
+text = "Exit"
+_self = NodePath("../PlayButton")
+
+[node name="VB" type="VBoxContainer" parent="MainMenu/MC/HC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CC" type="CenterContainer" parent="MainMenu/MC/HC/VB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HB" type="HBoxContainer" parent="MainMenu/MC/HC/VB"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" parent="MainMenu/MC/HC/VB/HB" instance=ExtResource("3_ooa5h")]
+layout_mode = 2
+text = "alpha 1.0"
+
+[node name="Play" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MMBackground" type="ColorRect" parent="Play"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MC" type="MarginContainer" parent="Play"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Settings" type="MarginContainer" parent="." node_paths=PackedStringArray("back")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ibly3")
+back = NodePath("MC/HC/VC/VC/BackButton")
+
+[node name="MMBackground" type="ColorRect" parent="Settings"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MC" type="MarginContainer" parent="Settings"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HC" type="HBoxContainer" parent="Settings/MC"]
+layout_mode = 2
+
+[node name="VC" type="VBoxContainer" parent="Settings/MC/HC"]
+layout_mode = 2
+
+[node name="CC" type="CenterContainer" parent="Settings/MC/HC/VC"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VC" type="VBoxContainer" parent="Settings/MC/HC/VC"]
+layout_mode = 2
+
+[node name="BackButton" parent="Settings/MC/HC/VC/VC" instance=ExtResource("2_noubv")]
+layout_mode = 2
+text = "Back"
+
+[node name="VB" type="VBoxContainer" parent="Settings/MC/HC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CC" type="VBoxContainer" parent="Settings/MC/HC/VB"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FullScreenCheck" type="HBoxContainer" parent="Settings/MC/HC/VB/CC"]
+layout_mode = 2
+
+[node name="CheakLabel" parent="Settings/MC/HC/VB/CC/FullScreenCheck" instance=ExtResource("6_1nigf")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Full Screen"
+
+[node name="Settingscheckbutton" parent="Settings/MC/HC/VB/CC/FullScreenCheck" instance=ExtResource("7_bv3ya")]
+layout_mode = 2
+
+[node name="HB" type="HBoxContainer" parent="Settings/MC/HC/VB"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" parent="Settings/MC/HC/VB/HB" instance=ExtResource("3_ooa5h")]
+layout_mode = 2
+text = "alpha 1.0"
+
+[node name="Exit" type="MarginContainer" parent="." node_paths=PackedStringArray("exit", "cancel")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_jvt1i")
+exit = NodePath("MC/VB/HBoxContainer/ExitButton")
+cancel = NodePath("MC/VB/HBoxContainer/CancelButton")
+
+[node name="MMBackground" type="ColorRect" parent="Exit"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MC" type="MarginContainer" parent="Exit"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VB" type="VBoxContainer" parent="Exit/MC"]
+layout_mode = 2
+
+[node name="Label" parent="Exit/MC/VB" instance=ExtResource("3_ooa5h")]
+layout_mode = 2
+text = "Do you want Exit?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Exit/MC/VB"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CancelButton" parent="Exit/MC/VB/HBoxContainer" instance=ExtResource("2_noubv")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../ExitButton")
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_right = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../ExitButton")
+text = "Cancel"
+
+[node name="ExitButton" parent="Exit/MC/VB/HBoxContainer" node_paths=PackedStringArray("_self") instance=ExtResource("2_noubv")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../CancelButton")
+focus_neighbor_top = NodePath("../CancelButton")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_neighbor_bottom = NodePath("../CancelButton")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+text = "Exit"
+_self = NodePath("../CancelButton")
+
+[connection signal="visibility_changed" from="MainMenu" to="MainMenu" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="MainMenu/MC/HC/VC/VC/PlayButton" to="MainMenu" method="_on_play_button_mouse_entered"]
+[connection signal="mouse_entered" from="MainMenu/MC/HC/VC/VC/SettingsButton" to="MainMenu" method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="MainMenu/MC/HC/VC/VC/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="MainMenu/MC/HC/VC/VC/ExitButton" to="MainMenu" method="_on_exit_button_mouse_entered"]
+[connection signal="pressed" from="MainMenu/MC/HC/VC/VC/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="visibility_changed" from="Settings" to="Settings" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="Settings/MC/HC/VC/VC/BackButton" to="Settings" method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="Settings/MC/HC/VC/VC/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Settings/MC/HC/VB/CC/FullScreenCheck/Settingscheckbutton" to="Settings" method="_on_settingscheckbutton_mouse_entered"]
+[connection signal="toggled" from="Settings/MC/HC/VB/CC/FullScreenCheck/Settingscheckbutton" to="Settings" method="_on_settingscheckbutton_toggled"]
+[connection signal="visibility_changed" from="Exit" to="Exit" method="_on_visibility_changed"]
+[connection signal="mouse_entered" from="Exit/MC/VB/HBoxContainer/CancelButton" to="Exit" method="_on_cancel_button_mouse_entered"]
+[connection signal="pressed" from="Exit/MC/VB/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="mouse_entered" from="Exit/MC/VB/HBoxContainer/ExitButton" to="Exit" method="_on_exit_button_mouse_entered"]
+[connection signal="pressed" from="Exit/MC/VB/HBoxContainer/ExitButton" to="Exit" method="_on_exit_button_pressed"]
